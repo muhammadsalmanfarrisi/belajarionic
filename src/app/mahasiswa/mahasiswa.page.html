@@ -6,16 +6,19 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Data Mahasiswa</ion-title>
-    <ion-buttons slot="end">
-      <ion-button (click)="open_modal_tambah(true)" fill="solid" color="success">
-        <ion-icon name="person-add-outline"></ion-icon>
-        <ion-label>Tambah Mahasiswa</ion-label>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
-</ion-header>
+  <!-- <ion-toolbar color="primary">
 
-<ion-content>
+  </ion-toolbar> -->
+</ion-header>
+<br>
+<ion-buttons slot="end">
+  <ion-button (click)="open_modal_tambah(true)" fill="solid" color="success">
+    <ion-icon name="person-add-outline"></ion-icon>
+    <ion-label>Tambah Mahasiswa</ion-label>
+  </ion-button>
+</ion-buttons>
+<ion-content class="ion-padding">
   <ion-card *ngFor="let item of dataMahasiswa" class="custom-card">
     <ion-item lines="none">
       <ion-label>
@@ -54,7 +57,7 @@
         <ion-label position="floating">Jurusan Mahasiswa</ion-label>
         <ion-input [(ngModel)]="jurusan" type="text"></ion-input>
       </ion-item>
-      <ion-row>
+      <ion-row class="ion-margin-top">
         <ion-col>
           <ion-button expand="full" (click)="tambahMahasiswa()" color="success">
             <ion-icon name="checkmark-outline"></ion-icon> Tambah
@@ -88,7 +91,7 @@
         <ion-input [(ngModel)]="jurusan" type="text"></ion-input>
       </ion-item>
       <ion-input [(ngModel)]="id" type="hidden"></ion-input>
-      <ion-row>
+      <ion-row class="ion-margin-top">
         <ion-col>
           <ion-button expand="full" (click)="editMahasiswa()" color="primary">
             <ion-icon name="save-outline"></ion-icon> Simpan

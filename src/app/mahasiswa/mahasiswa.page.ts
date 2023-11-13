@@ -49,6 +49,7 @@ export class MahasiswaPage implements OnInit {
   cancel() {
     this.modal.dismiss();
     this.modal_tambah = false;
+    this.modal_edit = false;
     this.reset_model();
   }
   tambahMahasiswa() {
