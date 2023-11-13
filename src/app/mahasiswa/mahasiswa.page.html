@@ -1,0 +1,100 @@
+<!-- app.component.html -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Data Mahasiswa</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="open_modal_tambah(true)" fill="solid" color="success">
+        <ion-icon name="person-add-outline"></ion-icon>
+        <ion-label>Tambah Mahasiswa</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of dataMahasiswa" class="custom-card">
+    <ion-item lines="none">
+      <ion-label>
+        {{item.nama}}
+        <p>{{item.jurusan}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-button expand="full" fill="clear" (click)="open_modal_edit(true, item.id)" color="primary">
+      <ion-icon name="pencil-outline"></ion-icon> Edit
+    </ion-button>
+    <ion-button color="danger" expand="full" fill="clear" (click)="hapusMahasiswa(item.id)">
+      <ion-icon name="trash-outline"></ion-icon> Hapus
+    </ion-button>
+  </ion-card>
+</ion-content>
+
+<!-- Modal for adding a student -->
+<ion-modal [isOpen]="modal_tambah">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title>Tambah Mahasiswa</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-item>
+        <ion-label position="floating">Nama Mahasiswa</ion-label>
+        <ion-input [(ngModel)]="nama" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Jurusan Mahasiswa</ion-label>
+        <ion-input [(ngModel)]="jurusan" type="text"></ion-input>
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="full" (click)="tambahMahasiswa()" color="success">
+            <ion-icon name="checkmark-outline"></ion-icon> Tambah
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+<!-- Modal for editing a student -->
+<ion-modal [isOpen]="modal_edit">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title>Edit Mahasiswa</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-item>
+        <ion-label position="floating">Nama Mahasiswa</ion-label>
+        <ion-input [(ngModel)]="nama" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Jurusan Mahasiswa</ion-label>
+        <ion-input [(ngModel)]="jurusan" type="text"></ion-input>
+      </ion-item>
+      <ion-input [(ngModel)]="id" type="hidden"></ion-input>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="full" (click)="editMahasiswa()" color="primary">
+            <ion-icon name="save-outline"></ion-icon> Simpan
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-content>
+  </ng-template>
+</ion-modal>
